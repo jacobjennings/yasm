@@ -15,9 +15,9 @@ endforeach()
 
 
 # Where to look first for cmake modules
-set(CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}/cmake/modules")
+set(CMAKE_MODULE_PATH "${yasm_SOURCE_DIR}/cmake/modules")
 
-message("yasm module path: ${CMAKE_BINARY_DIR}")
+message("yasm module path: ${yasm_SOURCE_DIR}")
 
 INCLUDE(YasmMacros)
 INCLUDE(VersionGen)
