@@ -7,9 +7,9 @@ endif (COMMAND cmake_policy)
 OPTION(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
 # Where to look first for cmake modules
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
+set(CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}/cmake/modules")
 
-message("yasm module path: ${CMAKE_MODULE_PATH}")
+message("yasm module path: ${CMAKE_BINARY_DIR}")
 
 INCLUDE(YasmMacros)
 INCLUDE(VersionGen)
