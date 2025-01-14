@@ -1,16 +1,16 @@
 INCLUDE_DIRECTORIES(
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/frontends/yasm
+    ${yasm_SOURCE_DIR}/frontends/yasm
     )
 
 ADD_CUSTOM_COMMAND(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/license.c
-    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/frontends/yasm/genstring.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/../yasm/genstring.py
         license_msg
         ${CMAKE_CURRENT_BINARY_DIR}/license.c
-        ${CMAKE_SOURCE_DIR}/COPYING
-    MAIN_DEPENDENCY ${CMAKE_SOURCE_DIR}/COPYING
-    DEPENDS ${CMAKE_SOURCE_DIR}/frontends/yasm/genstring.py
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../COPYING
+    MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/../../COPYING
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/../yasm/genstring.py
     )
 
 SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
@@ -18,8 +18,8 @@ SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 IF(BUILD_SHARED_LIBS)
     ADD_EXECUTABLE(vsyasm
         vsyasm.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/frontends/yasm/yasm-options.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/frontends/yasm/yasm-plugin.c
+        ${yasm_SOURCE_DIR}/frontends/yasm/yasm-options.c
+        ${yasm_SOURCE_DIR}/frontends/yasm/yasm-plugin.c
         )
     TARGET_LINK_LIBRARIES(vsyasm libyasm ${LIBDL})
 ELSE(BUILD_SHARED_LIBS)
