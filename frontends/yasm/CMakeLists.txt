@@ -1,12 +1,18 @@
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+foreach (_variableName ${_variableNames})
+    message(STATUS "${_variableName}=${${_variableName}}")
+endforeach()
+
 ADD_CUSTOM_COMMAND(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/license.c
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/genstring.py
         license_msg
         ${CMAKE_CURRENT_BINARY_DIR}/license.c
-        ${yasm_SOURCE_DIR}/COPYING
-    MAIN_DEPENDENCY ${yasm_SOURCE_DIR}/COPYING
+        ${CMAKE_CURRENT_SOURCE_DIR}/COPYING
+    MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/COPYING
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/genstring.py
     )
 

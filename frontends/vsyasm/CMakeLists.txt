@@ -1,6 +1,6 @@
 INCLUDE_DIRECTORIES(
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${yasm_SOURCE_DIR}/frontends/yasm
+    ${CMAKE_CURRENT_SOURCE_DIR}/frontends/yasm
     )
 
 ADD_CUSTOM_COMMAND(
@@ -18,14 +18,14 @@ SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 IF(BUILD_SHARED_LIBS)
     ADD_EXECUTABLE(vsyasm
         vsyasm.c
-        ${yasm_SOURCE_DIR}/frontends/yasm/yasm-options.c
-        ${yasm_SOURCE_DIR}/frontends/yasm/yasm-plugin.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/frontends/yasm/yasm-options.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/frontends/yasm/yasm-plugin.c
         )
     TARGET_LINK_LIBRARIES(vsyasm libyasm ${LIBDL})
 ELSE(BUILD_SHARED_LIBS)
     ADD_EXECUTABLE(vsyasm
         vsyasm.c
-        ${yasm_SOURCE_DIR}/frontends/yasm/yasm-options.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/frontends/yasm/yasm-options.c
         )
     TARGET_LINK_LIBRARIES(vsyasm yasmstd libyasm)
 ENDIF(BUILD_SHARED_LIBS)

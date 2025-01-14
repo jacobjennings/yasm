@@ -1,6 +1,6 @@
 INCLUDE_DIRECTORIES(
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${yasm_SOURCE_DIR}/frontends/yasm
+    ${CMAKE_CURRENT_SOURCE_DIR}/frontends/yasm
     )
 
 ADD_CUSTOM_COMMAND(
@@ -8,8 +8,8 @@ ADD_CUSTOM_COMMAND(
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/frontends/yasm/genstring.py
         license_msg
         ${CMAKE_CURRENT_BINARY_DIR}/license.c
-        ${yasm_SOURCE_DIR}/COPYING
-    MAIN_DEPENDENCY ${yasm_SOURCE_DIR}/COPYING
+        ${CMAKE_CURRENT_SOURCE_DIR}/COPYING
+    MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/COPYING
     DEPENDS ${CMAKE_SOURCE_DIR}/frontends/yasm/genstring.py
     )
 
@@ -19,7 +19,7 @@ IF(BUILD_SHARED_LIBS)
     ADD_EXECUTABLE(ytasm
         tasm.c
         tasm-options.c
-        ${yasm_SOURCE_DIR}/frontends/yasm/yasm-plugin.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/frontends/yasm/yasm-plugin.c
         )
     TARGET_LINK_LIBRARIES(ytasm libyasm ${LIBDL})
 ELSE(BUILD_SHARED_LIBS)

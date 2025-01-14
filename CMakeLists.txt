@@ -15,9 +15,8 @@ endforeach()
 
 
 # Where to look first for cmake modules
-set(CMAKE_MODULE_PATH "${yasm_SOURCE_DIR}/cmake/modules")
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
 
-message("yasm module path: ${yasm_SOURCE_DIR}")
 
 INCLUDE(YasmMacros)
 INCLUDE(VersionGen)
@@ -41,7 +40,7 @@ VERSION_GEN(PACKAGE_VERSION "${CMAKE_BINARY_DIR}/YASM-VERSION-FILE" "1.3.0")
 
 set (PACKAGE_STRING "yasm ${PACKAGE_VERSION}")
 
-INCLUDE_DIRECTORIES(AFTER ${CMAKE_BINARY_DIR} ${yasm_SOURCE_DIR})
+INCLUDE_DIRECTORIES(AFTER ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
 INCLUDE(ConfigureChecks.cmake)
 
