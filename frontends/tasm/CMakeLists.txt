@@ -8,7 +8,7 @@ ADD_CUSTOM_COMMAND(
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/frontends/yasm/genstring.py
         license_msg
         ${CMAKE_CURRENT_BINARY_DIR}/license.c
-        ${CMAKE_SOURCE_DIR}/COPYING
+        ${yasm_SOURCE_DIR}/COPYING
     MAIN_DEPENDENCY ${CMAKE_SOURCE_DIR}/COPYING
     DEPENDS ${CMAKE_SOURCE_DIR}/frontends/yasm/genstring.py
     )
